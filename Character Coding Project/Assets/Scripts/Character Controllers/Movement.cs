@@ -7,7 +7,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public Vector3 position;
-    private CharacterController controller;
+    public CharacterController controller;
 
     public float moveSpeed = 10f, gravity = 9.81f, JumpSpeed = 30f;
     private int jumpCount;
@@ -20,6 +20,8 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
         if (controller.isGrounded)
         {
             position.y = 0;
@@ -30,6 +32,7 @@ public class Movement : MonoBehaviour
             position.y = JumpSpeed;
             jumpCount++;
         }
+        Vector3 move = transform.right * x + transform.forward * z;
 
         controller.Move(position * Time.deltaTime);
     }
