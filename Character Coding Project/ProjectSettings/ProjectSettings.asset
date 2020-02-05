@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 15
-  productGUID: 00000000000000000000000000000000
+  productGUID: 905eb31cd30e79e45b767f136a6e8a7c
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -619,7 +619,7 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   cloudProjectId: d5a72bf2-81bd-4327-829b-595b82df5134
   framebufferDepthMemorylessMode: 0
-  projectName: 
+  projectName: Character Coding Project
   organizationId: mcblade
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

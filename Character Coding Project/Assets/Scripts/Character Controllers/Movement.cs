@@ -13,6 +13,8 @@ public class Movement : MonoBehaviour
     private int jumpCount;
     public int jumpCountMax = 2;
 
+    Vector3 velocity;
+
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -20,21 +22,27 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        float x = Input.GetAxis("Horizontal") * moveSpeed;
-        float z = Input.GetAxis("Vertical") * moveSpeed;
+        
+
         if (controller.isGrounded)
         {
-            position.y = 0;
+           
             jumpCount = 0;
+            if (Input.GetKeyDown(KeyCode.Space) && jumpCount < jumpCountMax)
+            {
+                velocity.y = JumpSpeed * gravity * Time.deltaTime;
+                position.y = velocity.y;
+                jumpCount++;
+                Debug.Log("Grounded");
+            }
         }
-        if (Input.GetButtonDown("Jump") && jumpCount < jumpCountMax)
-        {
-            position.y = JumpSpeed;
-            jumpCount++;
-        }
-        Vector3 move = transform.right * x + transform.forward * z;
+       
+        position.Set(Input.GetAxis("Horizontal") * moveSpeed, 0, Input.GetAxis("Vertical") * moveSpeed);
+
+        position.y -= gravity * Time.deltaTime;
 
         controller.Move(position * Time.deltaTime);
+        
     }
 }
 
